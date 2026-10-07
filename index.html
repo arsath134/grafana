@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopSphere | Premium Shopping</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f5f6fa;
+            color: #172033;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #101828;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #67e8f9;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 450px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 13px 45px 13px 20px;
+            border-radius: 30px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 11px;
+            font-size: 20px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            border: none;
+            background: #1d2939;
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+            background: #344054;
+        }
+
+        .cart-btn {
+            position: relative;
+            border: none;
+            background: #67e8f9;
+            color: #164e63;
+            padding: 12px 18px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(103,232,249,0.35);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -7px;
+            right: -7px;
+            background: #ef4444;
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ================= NAVIGATION ================= */
+
+        nav {
+            background: white;
+            padding: 16px 7%;
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            position: sticky;
+            top: 80px;
+            z-index: 900;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            color: #344054;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+            width: 0;
+            height: 2px;
+            background: #4f46e5;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            margin: 35px 7%;
+            padding: 65px;
+            min-height: 390px;
+            border-radius: 25px;
+            background: linear-gradient(
+                120deg,
+                #111827,
+                #4338ca,
+                #7c3aed
+            );
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            right: -100px;
+            top: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 5vw, 60px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            animation: slideUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #e0e7ff;
+            margin-bottom: 25px;
+            animation: slideUp 1s ease;
+        }
+
+        .hero button {
+            padding: 15px 28px;
+            border: none;
+            border-radius: 30px;
+            background: #67e8f9;
+            color: #164e63;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero button:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(103,232,249,0.35);
+        }
+
+        .hero img {
+            width: 40%;
+            max-width: 420px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px #0005;
+            animation: floatingImage 4s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            padding: 35px 7%;
+        }
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            font-size: 30px;
+        }
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 25px #00000008;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px #00000015;
+        }
+
+        .category span {
+            display: block;
+            font-size: 45px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        .category:hover span {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px #0000000c;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px #00000018;
+        }
+
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .product:hover img {
+            transform: scale(1.08);
+        }
+
+        .wishlist {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            border: none;
+            background: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 19px;
+            box-shadow: 0 5px 15px #0003;
+            transition: 0.3s;
+        }
+
+        .wishlist:hover {
+            transform: scale(1.15);
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #4f46e5;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        .rating {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .price {
+            font-size: 23px;
+            color: #4f46e5;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .product button.add-btn {
+            width: 100%;
+            padding: 13px;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .product button.add-btn:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+        /* ================= CART DRAWER ================= */
+
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 420px;
+            max-width: 95%;
+            height: 100vh;
+            background: white;
+            z-index: 2100;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.2);
+            transition: right 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-panel.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-header button {
+            border: none;
+            background: #f2f4f7;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            margin-bottom: 7px;
+        }
+
+        .cart-item-price {
+            color: #4f46e5;
+            font-weight: bold;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .quantity button {
+            width: 27px;
+            height: 27px;
+            border: none;
+            border-radius: 5px;
+            background: #eaecf0;
+            cursor: pointer;
+        }
+
+        .remove-item {
+            color: #ef4444;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #667085;
+        }
+
+        .empty-cart div {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .checkout {
+            width: 100%;
+            padding: 14px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .clear-cart {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            color: #ef4444;
+            border: none;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        /* ================= TOAST ================= */
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #101828;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            z-index: 5000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            margin-top: 50px;
+            padding: 45px 7%;
+            text-align: center;
+            background: #101828;
+            color: #d0d5dd;
+        }
+
+        footer p {
+            margin: 8px;
+        }
+
+        /* ================= DARK MODE ================= */
+
+        body.dark {
+            background: #0b1120;
+            color: #f9fafb;
+        }
+
+        body.dark nav,
+        body.dark .category,
+        body.dark .product,
+        body.dark .cart-panel {
+            background: #111827;
+            color: #f9fafb;
+        }
+
+        body.dark nav a {
+            color: #d1d5db;
+        }
+
+        body.dark .product-info p {
+            color: #98a2b3;
+        }
+
+        body.dark .category {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        body.dark .cart-header,
+        body.dark .cart-footer,
+        body.dark .cart-item {
+            border-color: #344054;
+        }
+
+        body.dark .cart-header button,
+        body.dark .quantity button {
+            background: #344054;
+            color: white;
+        }
+
+        body.dark .empty-cart {
+            color: #98a2b3;
+        }
+
+        /* ================= ANIMATIONS ================= */
+
+        @keyframes floatingImage {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0,0);
+            }
+
+            50% {
+                transform: translate(-30px,30px);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+            .categories,
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                top: 135px;
+                gap: 18px;
+                padding: 12px 5%;
+            }
+
+            .hero {
+                margin: 25px 5%;
+                padding: 30px;
+            }
+
+            .hero img {
+                display: none;
+            }
+
+            .section {
+                padding: 25px 5%;
+            }
+
+            .categories,
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                order: 3;
+                flex-basis: 100%;
+            }
+
+            .cart-panel {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="logo">
+        Shop<span>Sphere.</span>
+    </div>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search your favorite products..."
+        >
+        <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="header-actions">
+
+        <button
+            class="icon-btn"
+            id="themeToggle"
+            title="Toggle dark mode"
+        >
+            🌙
+        </button>
+
+        <button
+            class="cart-btn"
+            onclick="openCart()"
+        >
+            🛒 Cart
+
+            <span
+                class="cart-count"
+                id="cartCount"
+            >
+                0
+            </span>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <a href="#">Home</a>
+
+    <a href="#categories">
+        Categories
+    </a>
+
+    <a href="#products">
+        Products
+    </a>
+
+    <a href="#footer">
+        Contact
+    </a>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Discover<br>
+            Something New.
+        </h1>
+
+        <p>
+            Explore premium gadgets, fashion, electronics
+            and lifestyle products at exciting prices.
+        </p>
+
+        <button
+            onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})"
+        >
+            Shop Now →
+        </button>
+
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85"
+        alt="Red sneaker promotional product"
+    >
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section
+    class="section"
+    id="categories"
+>
+
+    <div class="section-title">
+        <h2>Explore Categories</h2>
+    </div>
+
+    <div class="categories">
+
+        <div class="category">
+            <span>📱</span>
+            <h3>Electronics</h3>
+        </div>
+
+        <div class="category">
+            <span>👕</span>
+            <h3>Fashion</h3>
+        </div>
+
+        <div class="category">
+            <span>⌚</span>
+            <h3>Accessories</h3>
+        </div>
+
+        <div class="category">
+            <span>🎧</span>
+            <h3>Gadgets</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section
+    class="section"
+    id="products"
+>
+
+    <div class="section-title">
+
+        <h2>
+            Trending Products
+        </h2>
+
+    </div>
+
+    <div
+        class="products"
+        id="productContainer"
+    >
+
+        <!-- Product 1 -->
+
+        <div
+            class="product"
+            data-name="Wireless Headphones"
+        >
+
+            <div class="product-image">
+
+                <span class="badge">
+                    Popular
+                </span>
+
+                <button
+                    class="wishlist"
+                    onclick="toggleWishlist(this)"
+                >
+                    ♡
+                </button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85"
+                    alt="Wireless headphones"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Wireless Headphones
+                </h3>
+
+                <p>
+                    Premium sound experience
+                </p>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+                    ₹2,499
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart(
+                        'Wireless Headphones',
+                        2499,
+                        'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85'
+                    )"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Product 2 -->
+
+        <div
+            class="product"
+            data-name="Classic Watch"
+        >
+
+            <div class="product-image">
+
+                <span class="badge">
+                    New
+                </span>
+
+                <button
+                    class="wishlist"
+                    onclick="toggleWishlist(this)"
+                >
+                    ♡
+                </button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85"
+                    alt="Classic wristwatch"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Classic Watch
+                </h3>
+
+                <p>
+                    Style meets elegance
+                </p>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐☆
+                </div>
+
+                <div class="price">
+                    ₹3,999
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart(
+                        'Classic Watch',
+                        3999,
+                        'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85'
+                    )"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Product 3 -->
+
+        <div
+            class="product"
+            data-name="Digital Camera"
+        >
+
+            <div class="product-image">
+
+                <span class="badge">
+                    Sale
+                </span>
+
+                <button
+                    class="wishlist"
+                    onclick="toggleWishlist(this)"
+                >
+                    ♡
+                </button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=700&q=85"
+                    alt="Digital camera"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Digital Camera
+                </h3>
+
+                <p>
+                    Capture every moment
+                </p>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+                    ₹8,499
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart(
+                        'Digital Camera',
+                        8499,
+                        'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=700&q=85'
+                    )"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Product 4 -->
+
+        <div
+            class="product"
+            data-name="Studio Headphones"
+        >
+
+            <div class="product-image">
+
+                <button
+                    class="wishlist"
+                    onclick="toggleWishlist(this)"
+                >
+                    ♡
+                </button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=85"
+                    alt="Studio headphones"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Studio Headphones
+                </h3>
+
+                <p>
+                    Immersive listening experience
+                </p>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐☆
+                </div>
+
+                <div class="price">
+                    ₹4,499
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart(
+                        'Studio Headphones',
+                        4499,
+                        'https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=700&q=85'
+                    )"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Product 5 -->
+
+        <div
+            class="product"
+            data-name="Smartphone"
+        >
+
+            <div class="product-image">
+
+                <span class="badge">
+                    Hot
+                </span>
+
+                <button
+                    class="wishlist"
+                    onclick="toggleWishlist(this)"
+                >
+                    ♡
+                </button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85"
+                    alt="Smartphone"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Premium Smartphone
+                </h3>
+
+                <p>
+                    Powerful performance
+                </p>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+                    ₹24,999
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart(
+                        'Premium Smartphone',
+                        24999,
+                        'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=85'
+                    )"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Product 6 -->
+
+        <div
+            class="product"
+            data-name="Sneakers"
+        >
+
+            <div class="product-image">
+
+                <span class="badge">
+                    Trending
+                </span>
+
+                <button
+                    class="wishlist"
+                    onclick="toggleWishlist(this)"
+                >
+                    ♡
+                </button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85"
+                    alt="Red sneakers"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Premium Sneakers
+                </h3>
+
+                <p>
+                    Comfortable everyday style
+                </p>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+                    ₹3,299
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart(
+                        'Premium Sneakers',
+                        3299,
+                        'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85'
+                    )"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Product 7 -->
+
+        <div
+            class="product"
+            data-name="Gaming Keyboard"
+        >
+
+            <div class="product-image">
+
+                <button
+                    class="wishlist"
+                    onclick="toggleWishlist(this)"
+                >
+                    ♡
+                </button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=85"
+                    alt="Gaming keyboard"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Gaming Keyboard
+                </h3>
+
+                <p>
+                    Mechanical RGB keyboard
+                </p>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐☆
+                </div>
+
+                <div class="price">
+                    ₹2,799
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart(
+                        'Gaming Keyboard',
+                        2799,
+                        'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=85'
+                    )"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Product 8 -->
+
+        <div
+            class="product"
+            data-name="Smart Watch"
+        >
+
+            <div class="product-image">
+
+                <span class="badge">
+                    New
+                </span>
+
+                <button
+                    class="wishlist"
+                    onclick="toggleWishlist(this)"
+                >
+                    ♡
+                </button>
+
+                <img
+                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=700&q=85"
+                    alt="Smart watch"
+                >
+
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    Smart Watch
+                </h3>
+
+                <p>
+                    Track your daily lifestyle
+                </p>
+
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+
+                <div class="price">
+                    ₹5,499
+                </div>
+
+                <button
+                    class="add-btn"
+                    onclick="addToCart(
+                        'Smart Watch',
+                        5499,
+                        'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=700&q=85'
+                    )"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CART OVERLAY ================= -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()"
+></div>
+
+
+<!-- ================= CART PANEL ================= -->
+
+<div
+    class="cart-panel"
+    id="cartPanel"
+>
+
+    <div class="cart-header">
+
+        <h2>
+            🛒 Your Cart
+        </h2>
+
+        <button
+            onclick="closeCart()"
+        >
+            ✕
+        </button>
+
+    </div>
+
+
+    <div
+        class="cart-items"
+        id="cartItems"
+    >
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            <span>
+                Total
+            </span>
+
+            <span id="cartTotal">
+                ₹0
+            </span>
+
+        </div>
+
+        <button
+            class="checkout"
+            onclick="checkout()"
+        >
+            Proceed to Checkout
+        </button>
+
+        <button
+            class="clear-cart"
+            onclick="clearCart()"
+        >
+            Clear Cart
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div
+    class="toast"
+    id="toast"
+>
+    Product added to cart!
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="footer">
+
+    <p>
+        © 2026 ShopSphere. All rights reserved.
+    </p>
+
+    <p>
+        Premium shopping, made simple.
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    /* ==========================================
+       CART
+    ========================================== */
+
+    let cart = JSON.parse(
+        localStorage.getItem("shopsphereCart")
+    ) || [];
+
+
+    function saveCart() {
+
+        localStorage.setItem(
+            "shopsphereCart",
+            JSON.stringify(cart)
+        );
+
+    }
+
+
+    function addToCart(name, price, image) {
+
+        const existingProduct = cart.find(
+            item => item.name === name
+        );
+
+
+        if (existingProduct) {
+
+            existingProduct.quantity++;
+
+        } else {
+
+            cart.push({
+                name: name,
+                price: price,
+                image: image,
+                quantity: 1
+            });
+
+        }
+
+
+        saveCart();
+
+        updateCart();
+
+        showToast(
+            `${name} added to cart 🛒`
+        );
+
+    }
+
+
+    function updateCart() {
+
+        const cartItems =
+            document.getElementById("cartItems");
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+        const cartTotal =
+            document.getElementById("cartTotal");
+
+
+        let totalItems = 0;
+
+        let totalPrice = 0;
+
+
+        if (cart.length === 0) {
+
+            cartItems.innerHTML = `
+
+                <div class="empty-cart">
+
+                    <div>🛒</div>
+
+                    <h3>
+                        Your cart is empty
+                    </h3>
+
+                    <p>
+                        Add some products to get started.
+                    </p>
+
+                </div>
+
+            `;
+
+        } else {
+
+            cartItems.innerHTML = cart.map(
+                (item, index) => {
+
+                    totalItems += item.quantity;
+
+                    totalPrice +=
+                        item.price *
+                        item.quantity;
+
+
+                    return `
+
+                        <div class="cart-item">
+
+                            <img
+                                src="${item.image}"
+                                alt="${item.name}"
+                            >
+
+                            <div class="cart-item-info">
+
+                                <h4>
+                                    ${item.name}
+                                </h4>
+
+                                <div class="cart-item-price">
+                                    ₹${item.price.toLocaleString("en-IN")}
+                                </div>
+
+                                <div class="quantity">
+
+                                    <button
+                                        onclick="changeQuantity(${index}, -1)"
+                                    >
+                                        −
+                                    </button>
+
+                                    <span>
+                                        ${item.quantity}
+                                    </span>
+
+                                    <button
+                                        onclick="changeQuantity(${index}, 1)"
+                                    >
+                                        +
+                                    </button>
+
+                                    <button
+                                        class="remove-item"
+                                        onclick="removeFromCart(${index})"
+                                    >
+                                        Remove
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            ).join("");
+
+        }
+
+
+        cartCount.textContent =
+            totalItems;
+
+        cartTotal.textContent =
+            "₹" + totalPrice.toLocaleString("en-IN");
+
+    }
+
+
+    function changeQuantity(index, change) {
+
+        cart[index].quantity += change;
+
+
+        if (cart[index].quantity <= 0) {
+
+            cart.splice(index, 1);
+
+        }
+
+
+        saveCart();
+
+        updateCart();
+
+    }
+
+
+    function removeFromCart(index) {
+
+        const removed =
+            cart[index].name;
+
+        cart.splice(index, 1);
+
+        saveCart();
+
+        updateCart();
+
+        showToast(
+            `${removed} removed from cart`
+        );
+
+    }
+
+
+    function clearCart() {
+
+        if (cart.length === 0) {
+            return;
+        }
+
+
+        cart = [];
+
+        saveCart();
+
+        updateCart();
+
+        showToast(
+            "Cart cleared"
+        );
+
+    }
+
+
+    /* ==========================================
+       OPEN / CLOSE CART
+    ========================================== */
+
+    function openCart() {
+
+        document
+            .getElementById("cartPanel")
+            .classList.add("active");
+
+        document
+            .getElementById("cartOverlay")
+            .classList.add("active");
+
+    }
+
+
+    function closeCart() {
+
+        document
+            .getElementById("cartPanel")
+            .classList.remove("active");
+
+        document
+            .getElementById("cartOverlay")
+            .classList.remove("active");
+
+    }
+
+
+    /* ==========================================
+       CHECKOUT
+    ========================================== */
+
+    function checkout() {
+
+        if (cart.length === 0) {
+
+            showToast(
+                "Your cart is empty!"
+            );
+
+            return;
+
+        }
+
+
+        showToast(
+            "Checkout system coming soon 🚀"
+        );
+
+    }
+
+
+    /* ==========================================
+       TOAST
+    ========================================== */
+
+    function showToast(message) {
+
+        const toast =
+            document.getElementById("toast");
+
+
+        toast.textContent =
+            message;
+
+
+        toast.classList.add(
+            "show"
+        );
+
+
+        setTimeout(() => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+        }, 2500);
+
+    }
+
+
+    /* ==========================================
+       DARK MODE
+    ========================================== */
+
+    const themeToggle =
+        document.getElementById(
+            "themeToggle"
+        );
+
+
+    const savedTheme =
+        localStorage.getItem(
+            "shopsphereTheme"
+        );
+
+
+    if (savedTheme === "dark") {
+
+        document.body.classList.add(
+            "dark"
+        );
+
+        themeToggle.textContent =
+            "☀️";
+
+    }
+
+
+    themeToggle.addEventListener(
+        "click",
+        () => {
+
+            document.body.classList.toggle(
+                "dark"
+            );
+
+
+            const darkMode =
+                document.body.classList.contains(
+                    "dark"
+                );
+
+
+            themeToggle.textContent =
+                darkMode
+                    ? "☀️"
+                    : "🌙";
+
+
+            localStorage.setItem(
+                "shopsphereTheme",
+                darkMode
+                    ? "dark"
+                    : "light"
+            );
+
+        }
+    );
+
+
+    /* ==========================================
+       SEARCH
+    ========================================== */
+
+    const searchInput =
+        document.getElementById(
+            "searchInput"
+        );
+
+
+    searchInput.addEventListener(
+        "input",
+        () => {
+
+            const searchValue =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            const products =
+                document.querySelectorAll(
+                    ".product"
+                );
+
+
+            products.forEach(product => {
+
+                const name =
+                    product.dataset.name
+                        .toLowerCase();
+
+
+                if (
+                    name.includes(
+                        searchValue
+                    )
+                ) {
+
+                    product.style.display =
+                        "";
+
+                } else {
+
+                    product.style.display =
+                        "none";
+
+                }
+
+            });
+
+        }
+    );
+
+
+    /* ==========================================
+       WISHLIST
+    ========================================== */
+
+    function toggleWishlist(button) {
+
+        if (
+            button.textContent.trim()
+            === "♡"
+        ) {
+
+            button.textContent =
+                "♥";
+
+            button.style.color =
+                "#ef4444";
+
+            showToast(
+                "Added to wishlist ❤️"
+            );
+
+        } else {
+
+            button.textContent =
+                "♡";
+
+            button.style.color =
+                "";
+
+            showToast(
+                "Removed from wishlist"
+            );
+
+        }
+
+    }
+
+
+    /* ==========================================
+       INITIAL CART LOAD
+    ========================================== */
+
+    updateCart();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+apiVersion: v1       # ---> mention API version for Service resource
+kind: Service        # ---> mention kind of resource as Service
+
+metadata:            # ---> metadata section for Service information
+  name: shopsphere   # ---> name of the Service resource
+
+spec:                # ---> specification section for Service resource
+  type: NodePort     # ---> type of Service to expose the application outside the cluster
+
+  selector:          # ---> selector section to match pods with specific labels
+    app: shopsphere  # ---> label key-value pair to match pods with the label "app: shopsphere"
+
+  ports:             # ---> ports section to define the ports exposed by the Service
+    - port: 80       # ---> port number that the Service will listen on
+      targetPort: 80 # ---> port number that the Service will forward traffic to on the pods

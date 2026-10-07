@@ -1,0 +1,24 @@
+apiVersion: apps/v1                 # ---> mention API version for Deployment resource
+kind: Deployment                    # ---> mention kind of resource as Deployment
+
+metadata:                           # ---> metadata section for Deployment information
+  name: shopsphere                  # ---> name of the Deployment resource
+
+spec:                               # ---> specification section for Deployment resource
+  replicas: 2                       # ---> number of desired pod replicas
+
+  selector:                          # ---> selector section to match pods with specific labels
+    matchLabels:                    # ---> match labels to identify pods managed by this Deployment
+      app: shopsphere               # ---> label key-value pair to match pods with the label "app: shopsphere"
+
+  template:                         # ---> template section to define the pod template for the Deployment
+    metadata:                       # ---> metadata section for the pod template
+      labels:                       # ---> labels section to assign labels to the pods created by this Deployment
+        app: shopsphere             # ---> label key-value pair to assign the label "app: shopsphere" to the pods
+
+    spec:                           # ---> specification section for the pod template
+      containers:                   # ---> containers section to define the containers within the pods
+        - name: shopsphere          # ---> name of the container within the pod
+          image: shopsphere:v2      # ---> Docker image to be used for the container
+          ports:                    # ---> ports section to define the ports exposed by the container
+            - containerPort: 80     # ---> port number that the container will listen on
